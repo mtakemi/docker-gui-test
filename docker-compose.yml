@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    image: ubuntu-x11-apps
+    ipc: host
+    devices:
+      - /dev/dxg:/dev/dxg
+    volumes:
+      - /usr/lib/wsl:/usr/lib/wsl
+      - /mnt/wslg:/mnt/wslg
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: :0
+      WAYLAND_DISPLAY: wayland-0
+      XDG_RUNTIME_DIR: /mnt/wslg/runtime-dir
+      GALLIUM_DRIVER: d3d12
+      PULSE_SERVER: /mnt/wslg/PulseServer
+      LD_LIBRARY_PATH: /usr/lib/wsl/lib
+    tty: true
+    stdin_open: true
+    command: /bin/bash -c 'glxinfo -B && xeyes'
