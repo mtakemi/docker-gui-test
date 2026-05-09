@@ -39,9 +39,14 @@ docker run -it --rm --ipc=host \
 	-e WAYLAND_DISPLAY=wayland-0 \
 	-e XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir \
 	-e GALLIUM_DRIVER=d3d12 \
+	-e MESA_LOADER_DRIVER_OVERRIDE=d3d12 \
+	-e MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA \
+	-e VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/dzn_icd.json \
+	-e VK_DRIVER_FILES=/usr/share/vulkan/icd.d/dzn_icd.json \
+	-e LIBVA_DRIVER_NAME=d3d12 \
 	-e PULSE_SERVER=/mnt/wslg/PulseServer \
 	-e LD_LIBRARY_PATH=/usr/lib/wsl/lib \
-	ubuntu-x11-apps /bin/bash -c 'glxinfo -B && xeyes'
+	ubuntu-x11-apps /bin/bash -c 'glxinfo -B && gpu-viewer'
 ```
 
 ## Docker Compose
