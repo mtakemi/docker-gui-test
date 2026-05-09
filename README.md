@@ -2,6 +2,8 @@
 
 WSL2 内の Docker で GPU と GUI を使用できるか、簡単に確認するためのリポジトリです。
 
+本リポジトリでは、GPU 情報の可視化ツールとして [GPU-Viewer](https://github.com/arunsivaramanneo/GPU-Viewer) を使用しています。
+
 ## 注意事項
 
 **⚠️ Windows 10 の場合、GPU 対応は期待できない可能性が高いです**
@@ -47,6 +49,18 @@ docker run -it --rm --ipc=host \
 ```bash
 docker compose up --build
 ```
+
+## 実行結果
+
+`png` 配下の画像は、この構成での実行結果です。
+
+### Vulkan
+
+![Vulkan 実行結果](png/vulkan.png)
+
+### OpenGL
+
+![OpenGL 実行結果](png/opengl.png)
 
 
 
