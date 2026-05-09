@@ -14,8 +14,13 @@ services:
       WAYLAND_DISPLAY: wayland-0
       XDG_RUNTIME_DIR: /mnt/wslg/runtime-dir
       GALLIUM_DRIVER: d3d12
+      MESA_LOADER_DRIVER_OVERRIDE: d3d12
+      MESA_D3D12_DEFAULT_ADAPTER_NAME: NVIDIA
+      VK_ICD_FILENAMES: /usr/share/vulkan/icd.d/dzn_icd.json
+      VK_DRIVER_FILES: /usr/share/vulkan/icd.d/dzn_icd.json
+      LIBVA_DRIVER_NAME: d3d12
       PULSE_SERVER: /mnt/wslg/PulseServer
       LD_LIBRARY_PATH: /usr/lib/wsl/lib
     tty: true
     stdin_open: true
-    command: /bin/bash -c 'glxinfo -B && xeyes'
+    command: /bin/bash -c 'glxinfo -B && gpu-viewer'
