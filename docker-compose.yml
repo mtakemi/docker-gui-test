@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: ubuntu-x11-apps
+    image: mtakemi/ubuntu-x11-apps:gpu-viewer
     ipc: host
     devices:
       - /dev/dxg:/dev/dxg
