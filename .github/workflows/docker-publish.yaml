@@ -2,9 +2,9 @@ name: Docker Image CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "gpu-viewer" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "gpu-viewer" ]
 
 jobs:
   build-and-push:
@@ -27,7 +27,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-x11-apps:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-x11-apps:${{ github.ref_name }}
           ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-x11-apps:${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
